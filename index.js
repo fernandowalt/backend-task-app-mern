@@ -1,3 +1,5 @@
+/** @format */
+
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
@@ -31,14 +33,14 @@ app.use("/api/usuarios", userRoutes);
 app.use("/api/proyectos", projectRoutes);
 app.use("/api/tareas", taskRoutes);
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 const server = app.listen(PORT, () => {
 	console.log(`Servidor corriendo en el puerto: ${PORT}`);
 });
 
 //socket.io
 import { Server } from "socket.io";
-const io = new Server(server, { pingTimeout: 60009, cors: { origin: process.env.FRONTEND_URL } });
+const io = new Server(server, { pingTimeout: 60000, cors: { origin: process.env.FRONTEND_URL } });
 io.on("connection", socket => {
 	console.log("Conecectado a socket.io");
 
